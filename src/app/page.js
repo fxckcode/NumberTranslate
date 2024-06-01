@@ -5,8 +5,8 @@ import React, { useState } from 'react'
 function HomePage() {
   const [prompt, setPrompt] = useState('')
   const [result, setResult] = useState({})
-  const [ to, setTo ] = useState(1)
-  const [ letterCase, setLetterCase ] = useState(1)
+  const [to, setTo] = useState(1)
+  const [letterCase, setLetterCase] = useState(1)
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -16,7 +16,7 @@ function HomePage() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         number: prompt,
         to: to,
         letterCase: letterCase
@@ -28,13 +28,33 @@ function HomePage() {
   }
 
   const handleInput = (e) => {
-    const value = e.target.value;
+    let value = e.target.value;
+
+    // Solo permite números y elimina cualquier otro carácter
     let cleanedValue = value.replace(/[^0-9]/g, '');
+
+    // Evita que el número comience con 0
     if (cleanedValue.length > 1 && cleanedValue.startsWith('0')) {
-      cleanedValue = cleanedValue.substring(1);
+      cleanedValue = cleanedValue.replace(/^0+/, '');
     }
 
     setPrompt(cleanedValue);
+  };
+
+  const handlePaste = (e) => {
+    e.preventDefault();
+    let paste = (e.clipboardData || window.clipboardData).getData('text');
+    paste = paste.replace(/[^0-9]/g, '');
+
+    // Evita que el número comience con 0
+    if (paste.startsWith('0')) {
+      paste = paste.replace(/^0+/, '');
+    }
+
+    setPrompt((prev) => {
+      const combined = prev + paste;
+      return combined.replace(/^0+/, '');
+    });
   };
 
   const handleClear = () => {
@@ -49,7 +69,7 @@ function HomePage() {
       <h1 className='text-center font-bold text-2xl text-white'>NumberTranslate</h1>
       <form onSubmit={onSubmit} className='flex lg:flex-row gap-5 flex-col items-center w-full h-full'>
         <div className='w-full h-full flex flex-col gap-2'>
-          <textarea type='text' onInput={handleInput} value={prompt} className='p-3 block bg-neutral-700 text-white w-full h-full rounded-md border border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-base' placeholder='Enter a number'></textarea>
+          <textarea type='text' onInput={handleInput} value={prompt} onPaste={handlePaste} className='p-3 block bg-neutral-700 text-white w-full h-full rounded-md border border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-base' placeholder='Enter a number'></textarea>
           <p className='text-white text-lg'>More filters:</p>
           <div className='flex flex-row justify-between gap-10'>
             <div className='flex flex-col gap-1 w-1/2'>

@@ -6,7 +6,7 @@ export async function POST(request) {
         const body = await request.json();
 
         if (body.number !== undefined) {
-            const words = toWords(parseInt(body.number, 10));
+            const words = toWords(parseInt(body.number));
             return NextResponse.json({ words });
         } else {
             return NextResponse.json({ error: 'No number provided' }, { status: 400 });
