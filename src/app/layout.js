@@ -8,7 +8,7 @@ export const metadata = {
     title: "Number Translate",
     description: "Translate numbers to English with ease. Simply enter a number and get its English equivalent.",
     type: "website",
-    url: "https://your-app-url.com",
+    url: "https://number-translate.vercel.app/",
   }
 };
 
