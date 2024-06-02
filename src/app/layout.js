@@ -1,5 +1,7 @@
 import "./globals.css";
 import Head from 'next/head';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: "Number Translate",
@@ -47,6 +49,8 @@ export default function RootLayout({ children }) {
       </Head>
       <body className="w-full h-screen bg-zinc-800 flex justify-center items-center">
         {children}
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
