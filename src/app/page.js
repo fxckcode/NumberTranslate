@@ -71,13 +71,13 @@ function HomePage() {
   }
 
   return (
-    <div className='flex flex-col gap-5 p-10 rounded bg-zinc-900 shadow-xl lg:w-1/2 lg:h-1/3 w-[80%] h-[60%]'>
+    <div className='flex flex-col gap-5 p-10 rounded bg-zinc-900 shadow-xl lg:w-1/2 lg:h-1/3 w-[80%] h-[80%]'>
       <h1 className='text-center font-bold text-2xl text-white'>NumberTranslate</h1>
       <form onSubmit={onSubmit} className='flex lg:flex-row gap-5 flex-col items-center w-full h-full'>
         <div className='w-full h-full flex flex-col gap-2'>
           <textarea type='text' onInput={handleInput} value={prompt} onPaste={handlePaste} className='p-3 block bg-neutral-700 text-white w-full h-full rounded-md border border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-base' placeholder='Enter a number'></textarea>
           <p className='text-white text-lg'>More filters:</p>
-          <div className='flex flex-row justify-between gap-10'>
+          <div className='flex flex-row justify-between gap-3 lg:gap-10'>
             <div className='flex flex-col gap-1 w-1/2'>
               <label className='text-white'>To:</label>
               <select className='p-1 block bg-neutral-700 text-white rounded-md border border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-base' value={to} onChange={(e) => setTo(e.target.value)}>
@@ -97,7 +97,7 @@ function HomePage() {
           </div>
 
         </div>
-        <div className='h-full flex flex-col justify-center w-1/3'>
+        <div className='h-full flex flex-col justify-center w-1/2 lg:w-1/3'>
           <button type='submit' className='bg-green-500 p-3 rounded-md block mt-2 text-white h-min text-base font-medium'>
             Generate
           </button>
