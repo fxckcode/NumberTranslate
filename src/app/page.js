@@ -38,6 +38,12 @@ function HomePage() {
       cleanedValue = cleanedValue.replace(/^0+/, '');
     }
 
+    // Verifica si el valor supera el límite (1 billón = 1,000,000,000)
+    const billionLimit = 10000000000;
+    if (parseInt(cleanedValue, 10) > billionLimit) {
+      cleanedValue = cleanedValue.substring(0, cleanedValue.length - 1); // Elimina el último dígito
+    }
+
     setPrompt(cleanedValue);
   };
 
@@ -84,8 +90,8 @@ function HomePage() {
               <select className='p-1 block bg-neutral-700 text-white rounded-md border border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-base' value={letterCase} onChange={(e) => setLetterCase(e.target.value)}>
                 <option value={1}>lowercase</option>
                 <option value={2}>UPPERCASE</option>
-                <option value={2}>Title Case</option>
-                <option value={2}>Sentence case</option>
+                <option value={3}>Title Case</option>
+                <option value={4}>Sentence case</option>
               </select>
             </div>
           </div>
