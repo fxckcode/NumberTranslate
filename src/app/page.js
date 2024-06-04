@@ -79,15 +79,15 @@ function HomePage() {
           <p className='text-white text-lg'>More filters:</p>
           <div className='flex flex-row justify-between gap-3 lg:gap-10'>
             <div className='flex flex-col gap-1 w-1/2'>
-              <label className='text-white'>To:</label>
-              <select className='p-1 block bg-neutral-700 text-white rounded-md border border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-base' value={to} onChange={(e) => setTo(e.target.value)}>
+              <label className='text-white' htmlFor='to'>To:</label>
+              <select className='p-1 block bg-neutral-700 text-white rounded-md border border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-base' value={to} onChange={(e) => setTo(e.target.value)} name='to' id='to'>
                 <option value={1}>Words</option>
                 <option value={2}>Currency</option>
               </select>
             </div>
             <div className='flex flex-col gap-1 w-1/2'>
-              <label className='text-white'>Letter Case:</label>
-              <select className='p-1 block bg-neutral-700 text-white rounded-md border border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-base' value={letterCase} onChange={(e) => setLetterCase(e.target.value)}>
+              <label className='text-white' htmlFor='letterCase'>Letter Case:</label>
+              <select className='p-1 block bg-neutral-700 text-white rounded-md border border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-base' value={letterCase} onChange={(e) => setLetterCase(e.target.value)} name='letterCase' id='letterCase'>
                 <option value={1}>lowercase</option>
                 <option value={2}>UPPERCASE</option>
                 <option value={3}>Title Case</option>
@@ -98,10 +98,10 @@ function HomePage() {
 
         </div>
         <div className='h-full flex flex-col justify-center w-1/2 lg:w-1/3'>
-          <button type='submit' className='bg-green-500 p-3 rounded-md block mt-2 text-white h-min text-base font-medium'>
+          <button type='submit' className='bg-green-600 p-3 rounded-md block mt-2 text-white h-min text-base font-medium hover:bg-green-700 transition-all'>
             Generate
           </button>
-          <button type='button' className='bg-sky-500 p-3 rounded-md block mt-2 text-white h-min text-base font-medium' onClick={handleClear}>
+          <button type='button' className='bg-sky-600 p-3 rounded-md block mt-2 text-white h-min text-base font-medium hover:bg-sky-700 transition-all' onClick={handleClear}>
             Clear
           </button>
         </div>
